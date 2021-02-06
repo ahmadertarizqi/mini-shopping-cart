@@ -1,0 +1,51 @@
+{
+  "name": "shopping-cart",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@tailwindcss/postcss7-compat": "^2.0.2",
+    "classnames": "^2.2.6",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-scripts": "4.0.1",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
+    "web-vitals": "^0.2.4"
+  },
+  "scripts": {
+    "generate:svgr": "svgr -d src/components/Icons/ public/icons/",
+    "tailwind:build": "postcss src/tailwind.css -c tailwind.config.js -o src/tailwind.output.css",
+    "tailwind:watch": "postcss src/tailwind.css -c tailwind.config.js -o src/tailwind.output.css --watch",
+    "start": "npm-run-all tailwind:build --parallel tailwind:watch start:react",
+    "start:react": "react-scripts start",
+    "prebuild": "run-s tailwind:build",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@svgr/cli": "^5.5.0",
+    "autoprefixer": "9",
+    "npm-run-all": "^4.1.5",
+    "postcss": "7",
+    "postcss-cli": "7.1.2"
+  }
+}
