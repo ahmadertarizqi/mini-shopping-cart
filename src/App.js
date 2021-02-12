@@ -1,20 +1,38 @@
 import React from 'react';
-import Cart from './components/Cart';
 import Header from "./components/Header";
 import Overlay from './components/Overlay';
 import ProductCard from "./components/ProductCard";
+import CartPanel from './components/CartPanel';
+import CartItem from "./components/CartItem";
+import useEscapeKeyPress from './hooks/useEscapeKeyPress';
+
+import datas from "./services/products.json";
+const { products } = datas;
 
 function App() {
    const [openCart, setOpenCart] = React.useState(false);
+   const [cart, setCart] = React.useState([]);
 
    const toggleCartPanel = () => {
       setOpenCart(!openCart);
-      if(!openCart) {
+      if (!openCart) {
          document.body.style.overflow = 'hidden';
       } else {
          document.body.style.overflow = 'initial';
       }
    };
+
+   // close cartPanel with Esc keyboard
+   useEscapeKeyPress(openCart, toggleCartPanel);
+
+   const addToCartHandler = (item) => {
+      console.log("added item success");
+      setCart(prevState => [...prevState, item]);
+   };
+
+   React.useEffect(() => {
+      console.log(cart);
+   }, [cart]);
 
    return (
       <div className="max-w-lg my-0 mx-auto">
@@ -22,17 +40,30 @@ function App() {
          <main className="container mx-auto px-0 pb-6 pt-14">
             <div className="py-5">
                <div className="flex flex-wrap mb-4 -mx-2">
-                  {[1, 2, 3, 4, 5].map((idx) => (
-                     <div key={idx} className={`w-1/2 px-2`}>
-                        <ProductCard />
+                  {products.map((product, idx) => (
+                     <div key={product.id} className={`w-1/2 px-2`}>
+                        <ProductCard
+                           product={product}
+                           addToCart={addToCartHandler}
+                        />
                      </div>
                   ))}
                </div>
             </div>
          </main>
-         <Cart isOpen={openCart} removeCartPanel={toggleCartPanel}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo doloribus possimus nam sint molestias aspernatur. In dolorum suscipit quasi deleniti pariatur ratione alias dolores quam, laudantium quas placeat laboriosam vel facilis neque libero facere dolor nisi voluptatem rerum perspiciatis vero accusamus doloremque? Et quos similique quo commodi reprehenderit totam itaque dolore, doloremque rerum temporibus ab nam accusamus atque quisquam suscipit nihil assumenda esse reiciendis unde enim? Molestiae eveniet enim quod repellendus quia sapiente sed tempore ullam nulla! Ea ratione repellendus ex est numquam accusantium blanditiis nesciunt animi accusamus libero voluptas vitae at quidem aperiam ab sequi excepturi, earum nihil quia.
-         </Cart>
+         <CartPanel isOpen={openCart} closeCartPanel={toggleCartPanel}>
+            {cart.length > 0 ?
+               [100, 200, 3223, 4000, 5000].map((idx) => (
+                  <CartItem key={idx}
+                     price={idx}
+                  />
+               ))
+               :
+               <div className="h-full flex items-center justify-center">
+                  <p className="font-semibold">Cart is Empty</p>
+               </div>
+            }
+         </CartPanel>
          {openCart ? <Overlay remove={toggleCartPanel} /> : null}
       </div>
    );

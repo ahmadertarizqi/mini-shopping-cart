@@ -1,0 +1,148 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Flare Dress",
+      "price": 120,
+      "salePrice": 200,
+      "discount": 50,
+      "pictures": [
+        "/assets/images/fashion/product/1.jpg",
+        "/assets/images/fashion/product/21.jpg",
+        "/assets/images/fashion/product/36.jpg",
+        "/assets/images/fashion/product/12.jpg"
+      ],
+      "description": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
+      "stock": 16,
+      "category": "women",
+      "colors": ["yellow", "gray", "green"],
+      "size": ["M", "L", "XL"]
+    },
+    {
+      "id": 2,
+      "name": "Wrap Dress",
+      "price": 330.0,
+      "salePrice": 165.0,
+      "discount": 50,
+      "pictures": [
+        "/assets/images/fashion/product/15.jpg",
+        "/assets/images/fashion/product/7.jpg",
+        "/assets/images/fashion/product/9.jpg",
+        "/assets/images/fashion/product/13.jpg"
+      ],
+      "description": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
+      "stock": 6,
+      "category": "women",
+      "colors": ["gray", "orange"],
+      "size": ["M", "L", "XL"]
+    },
+    {
+      "id": 3,
+      "name": "Danim Jeans",
+      "price": 500.0,
+      "salePrice": 250.0,
+      "discount": 50,
+      "pictures": [
+        "/assets/images/fashion/product/32.jpg",
+        "/assets/images/fashion/product/2.jpg",
+        "/assets/images/fashion/product/25.jpg",
+        "/assets/images/fashion/product/26.jpg"
+      ],
+      "description": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
+      "stock": 12,
+      "category": "women",
+      "colors": ["blue", "white", "yellow"],
+      "size": ["M", "L", "XL"]
+    },
+    {
+      "id": 4,
+      "name": "Waist Dress",
+      "price": 180.0,
+      "salePrice": 360.0,
+      "discount": 50,
+      "pictures": [
+        "/assets/images/fashion/product/5.jpg",
+        "/assets/images/fashion/product/12.jpg",
+        "/assets/images/fashion/product/31.jpg",
+        "/assets/images/fashion/product/18.jpg"
+      ],
+      "description": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
+      "stock": 10,
+      "category": "women",
+      "colors": ["pink", "gray", "green"],
+      "size": ["M", "L", "XL"]
+    },
+    {
+      "id": 5,
+      "name": "Trim Dress",
+      "price": 420.0,
+      "salePrice": 840.0,
+      "discount": 50,
+      "pictures": [
+        "/assets/images/fashion/product/13.jpg",
+        "/assets/images/fashion/product/10.jpg",
+        "/assets/images/fashion/product/21.jpg",
+        "/assets/images/fashion/product/15.jpg"
+      ],
+      "description": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
+      "stock": 10,
+      "category": "women",
+      "colors": ["pink", "yellow", "gray"],
+      "size": ["M", "L", "XL"]
+    },
+    {
+      "id": 6,
+      "name": "Cut Dress",
+      "price": 290,
+      "salePrice": 580,
+      "discount": 50,
+      "pictures": [
+        "/assets/images/fashion/product/30.jpg",
+        "/assets/images/fashion/product/29.jpg",
+        "/assets/images/fashion/product/28.jpg",
+        "/assets/images/fashion/product/9.jpg"
+      ],
+      "description": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
+      "stock": 10,
+      "category": "women",
+      "colors": ["blue", "gray", "orange"],
+      "size": ["M", "L", "XL"]
+    },
+    {
+      "id": 7,
+      "name": "Sleeveless dress",
+      "price": 950.0,
+      "salePrice": 425.0,
+      "discount": 50,
+      "pictures": [
+        "/assets/images/fashion/product/20.jpg",
+        "/assets/images/fashion/product/4.jpg",
+        "/assets/images/fashion/product/35.jpg",
+        "/assets/images/fashion/product/32.jpg"
+      ],
+      "description": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
+      "stock": 10,
+      "category": "women",
+      "colors": ["red", "white", "blue"],
+      "size": ["M", "L", "XL"]
+    },
+    {
+      "id": 8,
+      "name": "Maxi Dress",
+      "price": 140.0,
+      "salePrice": 280.0,
+      "discount": 50,
+      "pictures": [
+        "/assets/images/fashion/product/11.jpg",
+        "/assets/images/fashion/product/6.jpg",
+        "/assets/images/fashion/product/22.jpg",
+        "/assets/images/fashion/product/1.jpg"
+      ],
+      "description": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
+      "stock": 10,
+      "category": "women",
+      "colors": ["black", "yellow"],
+      "size": ["M", "L", "XL"]
+    }
+  ]
+}

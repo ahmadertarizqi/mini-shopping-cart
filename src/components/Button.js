@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
-
-function Button({ children }) {
+import classnames from 'classnames';
+function Button({ children, className, ...props }) {
+   const classes = classnames("py-2 px-4 text-sm font-medium rounded shadow-md text-white bg-green-500 hover:bg-green-700", className);
    return (
-      <button className="py-2 px-4 text-sm font-medium rounded shadow-md text-white bg-green-500 hover:bg-green-700">
+      <button className={classes} {...props}>
          {children}
       </button>
    )

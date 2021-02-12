@@ -25,3 +25,4 @@ yarn-error.log*
 
 # additional
 faker_json/node_modules
+.eslintcache

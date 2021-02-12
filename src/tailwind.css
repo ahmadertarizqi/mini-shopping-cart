@@ -4,5 +4,9 @@
 
 html,
 body {
-  @apply bg-gray-50;
+  @apply bg-gray-100;
+}
+
+.block-center-middle {
+  @apply flex items-center justify-center;
 }

@@ -12,7 +12,7 @@ function Header({ cartPanel }) {
                   height="2rem" 
                   onClick={() => cartPanel()}
                />
-               <span className="flex items-center justify-center absolute top-0 right-0 w-5 h-5 rounded-full bg-green-500 text-white text-xs">
+               <span className="flex items-center justify-center absolute top-0 right-0 w-5 h-5 rounded-full bg-green-500 text-white text-xs pointer-events-none">
                   50
                </span>
             </button>

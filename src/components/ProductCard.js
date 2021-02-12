@@ -1,9 +1,12 @@
-import Button from './Button';
-import classNames from 'classnames';
+import classnames from 'classnames';
+import PropTypes from 'prop-types';
 
-function ProductCard() {
+import Button from './Button';
+
+function ProductCard({ product, addToCart }) {
    const isHover = "hover:-translate-y-1 hover:shadow-md";
-   const cardStyles = classNames("mb-3 rounded-lg border border-gray-100 bg-white transform transition", isHover);
+   const cardStyles = classnames("mb-3 rounded-lg border border-gray-100 bg-white transform transition", isHover);
+   
    return (
       <div className={cardStyles}>
          <figure>
@@ -15,12 +18,22 @@ function ProductCard() {
             />
          </figure>
          <div className="px-6 pb-6 pt-2 space-y-2">
-            <span className="text-gray-800 font-semibold">Rp. 250000</span>
-            <p className="m-0">Safeway Kitchens Sliced Peaches 425ml</p>
-            <Button>Add to cart</Button>
+            <span className="text-gray-800 font-semibold">Rp. {product.price}</span>
+            <p className="m-0">{product.name}</p>
+            <Button onClick={() => addToCart(product)}>Add to cart</Button>
          </div>
       </div>
    )
 }
+
+ProductCard.defaultProps = {
+   name: "Product Name",
+   price: 15000,
+};
+
+ProductCard.propTypes = {
+   name: PropTypes.string.isRequired,
+   price: PropTypes.number.isRequired
+};
 
 export default ProductCard;
