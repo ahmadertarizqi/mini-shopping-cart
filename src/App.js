@@ -26,8 +26,26 @@ function App() {
    useEscapeKeyPress(openCart, toggleCartPanel);
 
    const addToCartHandler = (item) => {
-      console.log("added item success");
-      setCart(prevState => [...prevState, item]);
+      const findItemInCart = cart.find(val => val.id === item.id);
+      if(!findItemInCart) {
+         setCart(prevState => [...prevState, { ...item, quantity: 1 }]);
+      };
+   };
+
+   const increaseItemHandler = (itemID) => {
+      let cartItems = [...cart];
+      const indexItem = cartItems.findIndex(item => item.id === itemID);
+      cartItems[indexItem].quantity++;
+      setCart(cartItems);
+   };
+
+   const decreaseItemHandler = (itemID) => {
+      let cartItems = [...cart];
+      const indexItem = cartItems.findIndex(item => item.id === itemID);
+      if(cartItems[indexItem].quantity > 1) {
+         cartItems[indexItem].quantity--;
+         setCart(cartItems);
+      }
    };
 
    React.useEffect(() => {
@@ -36,11 +54,14 @@ function App() {
 
    return (
       <div className="max-w-lg my-0 mx-auto">
-         <Header cartPanel={toggleCartPanel} />
+         <Header 
+            cartPanel={toggleCartPanel} 
+            itemCount={cart.length}
+         />
          <main className="container mx-auto px-0 pb-6 pt-14">
             <div className="py-5">
                <div className="flex flex-wrap mb-4 -mx-2">
-                  {products.map((product, idx) => (
+                  {products.map((product) => (
                      <div key={product.id} className={`w-1/2 px-2`}>
                         <ProductCard
                            product={product}
@@ -53,9 +74,11 @@ function App() {
          </main>
          <CartPanel isOpen={openCart} closeCartPanel={toggleCartPanel}>
             {cart.length > 0 ?
-               [100, 200, 3223, 4000, 5000].map((idx) => (
-                  <CartItem key={idx}
-                     price={idx}
+               cart.map((item) => (
+                  <CartItem key={item.id}
+                     cartItem={item}
+                     increaseItem={increaseItemHandler}
+                     decreaseItem={decreaseItemHandler}
                   />
                ))
                :

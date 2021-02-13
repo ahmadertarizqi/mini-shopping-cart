@@ -1,6 +1,6 @@
 import { Cart } from "./Icons";
 
-function Header({ cartPanel }) {
+function Header({ cartPanel, itemCount }) {
    return (
       <header className="w-full fixed top-0 inset-x-0 z-20 shadow-md h-14 bg-white">
          <div className="max-w-lg my-0 mx-auto h-full flex items-center justify-between">
@@ -13,7 +13,7 @@ function Header({ cartPanel }) {
                   onClick={() => cartPanel()}
                />
                <span className="flex items-center justify-center absolute top-0 right-0 w-5 h-5 rounded-full bg-green-500 text-white text-xs pointer-events-none">
-                  50
+                  {itemCount > 0 ? itemCount : 0}
                </span>
             </button>
          </div>

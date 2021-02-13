@@ -14,8 +14,7 @@ Button.propTypes = {
 };
 
 Button.defaultProps = {
-   color: "bg-green-500",
-   textColor: "text-white"
+   color: "bg-green-500"
 };
 
 
