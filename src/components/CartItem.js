@@ -22,7 +22,9 @@ function CartItem({ cartItem, increaseItem, decreaseItem }) {
                   increaseItem={increaseItem}
                   decreaseItem={decreaseItem}
                />
-               <p className="text-sm flex-grow pr-2 font-semibold text-right">Rp. 25000</p>
+               <p className="text-sm flex-grow pr-2 font-semibold text-right">
+                  Rp. {cartItem.price * cartItem.quantity}
+               </p>
             </div>
          </div>
       </div>

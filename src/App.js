@@ -7,6 +7,7 @@ import CartItem from "./components/CartItem";
 import useEscapeKeyPress from './hooks/useEscapeKeyPress';
 
 import datas from "./services/products.json";
+import { calcItemsQuantity, calcTotalPrice } from './utils';
 const { products } = datas;
 
 function App() {
@@ -29,7 +30,9 @@ function App() {
       const findItemInCart = cart.find(val => val.id === item.id);
       if(!findItemInCart) {
          setCart(prevState => [...prevState, { ...item, quantity: 1 }]);
-      };
+      } else if (findItemInCart) {
+         increaseItemHandler(item.id);
+      }
    };
 
    const increaseItemHandler = (itemID) => {
@@ -56,7 +59,7 @@ function App() {
       <div className="max-w-lg my-0 mx-auto">
          <Header 
             cartPanel={toggleCartPanel} 
-            itemCount={cart.length}
+            itemCount={calcItemsQuantity(cart)}
          />
          <main className="container mx-auto px-0 pb-6 pt-14">
             <div className="py-5">
@@ -72,7 +75,11 @@ function App() {
                </div>
             </div>
          </main>
-         <CartPanel isOpen={openCart} closeCartPanel={toggleCartPanel}>
+         <CartPanel 
+            isOpen={openCart} 
+            closeCartPanel={toggleCartPanel}
+            totalPrice={calcTotalPrice(cart)}
+         >
             {cart.length > 0 ?
                cart.map((item) => (
                   <CartItem key={item.id}

@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Button from './Button';
 
-function CartPanel({ children, isOpen, closeCartPanel }) {
+function CartPanel({ children, isOpen, closeCartPanel, totalPrice }) {
    
    const panelClasses = classnames({
       "transform transition ease-in-out duration-300": true,
@@ -36,7 +37,7 @@ function CartPanel({ children, isOpen, closeCartPanel }) {
                <div className="flex-none block h-20 px-3 py-3">
                   <Button className="flex items-center w-full h-full">
                      <span className="flex-grow text-base text-left font-semibold">Proceed To Checkout</span>
-                     <span className="text-base">Rp 100,000,000</span>
+                     <span className="text-base">Rp {totalPrice}</span>
                   </Button>
                </div>
             </div>
@@ -47,7 +48,10 @@ function CartPanel({ children, isOpen, closeCartPanel }) {
 };
 
 CartPanel.propTypes = {
-
+   children: PropTypes.node,
+   isOpen: PropTypes.bool,
+   closeCartPanel: PropTypes.func,
+   totalPrice: PropTypes.number
 };
 
 export default CartPanel;
