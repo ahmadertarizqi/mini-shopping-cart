@@ -1,18 +1,19 @@
 import PropTypes from 'prop-types';
 
-function CounterItem({ className, countValue, cartItemID, increaseItem, decreaseItem }) {
+function CounterItem({ className, cartItem, increaseItem, decreaseItem }) {
    return (
       <div className={`flex items-center rounded border border-gray-500 w-24 ${className}`}>
          <button
             className="flex-none w-6 h-6 block-center-middle"
-            onClick={() => decreaseItem(cartItemID)}
+            onClick={() => decreaseItem(cartItem.id)}
          >-</button>
          <span className="flex-grow h-6 text-center border-l border-r border-gray-500 text-sm block-center-middle">
-            {countValue}
+            {cartItem.quantity}
          </span>
          <button
+            disabled={(cartItem.quantity >= cartItem.stock) ? true : false}
             className="flex-none w-6 h-6 block-center-middle"
-            onClick={() => increaseItem(cartItemID)}
+            onClick={() => increaseItem(cartItem.id)}
          >+</button>
       </div>
    )
@@ -24,7 +25,6 @@ CounterItem.defaultProps = {
 
 CounterItem.propTypes = {
    className: PropTypes.string,
-   countValue: PropTypes.number,
    incrementHandler: PropTypes.func,
    decrementHandler: PropTypes.func
 };

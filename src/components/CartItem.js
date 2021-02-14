@@ -14,11 +14,17 @@ function CartItem({ cartItem, increaseItem, decreaseItem }) {
          <div className="space-y-2 w-full">
             <p className="text-base leading-tight mb-2">{cartItem.name}</p>
             <small>Item Price: Rp. {cartItem.price} </small>
+            <br/>
+            <small>Stock: {cartItem.stock} 
+               {cartItem.quantity >= cartItem.stock 
+                  ? <em className="ml-2">(Max purchase of this product is {cartItem.stock} items)</em>
+                  : null
+               }
+            </small>
             <div className="flex items-center justify-between">
                <CounterItem 
                   className="flex-none" 
-                  countValue={cartItem.quantity}
-                  cartItemID={cartItem.id}
+                  cartItem={cartItem}
                   increaseItem={increaseItem}
                   decreaseItem={decreaseItem}
                />

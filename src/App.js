@@ -28,7 +28,7 @@ function App() {
 
    const addToCartHandler = (item) => {
       const findItemInCart = cart.find(val => val.id === item.id);
-      if(!findItemInCart) {
+      if (!findItemInCart) {
          setCart(prevState => [...prevState, { ...item, quantity: 1 }]);
       } else if (findItemInCart) {
          increaseItemHandler(item.id);
@@ -45,10 +45,12 @@ function App() {
    const decreaseItemHandler = (itemID) => {
       let cartItems = [...cart];
       const indexItem = cartItems.findIndex(item => item.id === itemID);
-      if(cartItems[indexItem].quantity > 1) {
+      if (cartItems[indexItem].quantity > 1) {
          cartItems[indexItem].quantity--;
-         setCart(cartItems);
+      } else {
+         cartItems.splice(indexItem, 1);
       }
+      setCart(cartItems);
    };
 
    React.useEffect(() => {
@@ -57,8 +59,8 @@ function App() {
 
    return (
       <div className="max-w-lg my-0 mx-auto">
-         <Header 
-            cartPanel={toggleCartPanel} 
+         <Header
+            cartPanel={toggleCartPanel}
             itemCount={calcItemsQuantity(cart)}
          />
          <main className="container mx-auto px-0 pb-6 pt-14">
@@ -75,8 +77,8 @@ function App() {
                </div>
             </div>
          </main>
-         <CartPanel 
-            isOpen={openCart} 
+         <CartPanel
+            isOpen={openCart}
             closeCartPanel={toggleCartPanel}
             totalPrice={calcTotalPrice(cart)}
          >
