@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Button from './Button';
 
-function CartPanel({ children, isOpen, closeCartPanel, totalPrice }) {
+function CartPanel({ children, isOpen, closeCartPanel, totalPrice, titlePanel }) {
    
    const panelClasses = classnames({
       "transform transition ease-in-out duration-300": true,
@@ -27,8 +27,8 @@ function CartPanel({ children, isOpen, closeCartPanel, totalPrice }) {
             </div>
             <div className="h-full flex flex-col bg-gray-100">
                <div className="flex-none block h-14 bg-white shadow relative z-10">
-                  <div className="px-4 sm:px-6">
-                     <h2 className="text-lg font-medium text-gray-900">Panel title</h2>
+                  <div className="px-4 sm:px-6 h-full flex items-center justify-center">
+                     <h2 className="text-lg font-bold text-gray-900">{titlePanel}</h2>
                   </div>
                </div>
                <div className="flex-1 py-5 px-3 overflow-y-auto overflow-x-hidden">

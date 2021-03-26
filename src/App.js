@@ -8,11 +8,12 @@ import useEscapeKeyPress from './hooks/useEscapeKeyPress';
 
 import datas from "./services/products.json";
 import { calcItemsQuantity, calcTotalPrice } from './utils';
+import { useCartConsumer } from './contexts/cartContext';
 const { products } = datas;
 
 function App() {
    const [openCart, setOpenCart] = React.useState(false);
-   const [cart, setCart] = React.useState([]);
+   const { cartState, dispatch } = useCartConsumer();
 
    const toggleCartPanel = () => {
       setOpenCart(!openCart);
@@ -26,42 +27,46 @@ function App() {
    // close cartPanel with Esc keyboard
    useEscapeKeyPress(openCart, toggleCartPanel);
 
-   const addToCartHandler = (item) => {
-      const findItemInCart = cart.find(val => val.id === item.id);
-      if (!findItemInCart) {
-         setCart(prevState => [...prevState, { ...item, quantity: 1 }]);
-      } else if (findItemInCart) {
-         increaseItemHandler(item.id);
-      }
-   };
-
-   const increaseItemHandler = (itemID) => {
-      let cartItems = [...cart];
-      const indexItem = cartItems.findIndex(item => item.id === itemID);
-      cartItems[indexItem].quantity++;
-      setCart(cartItems);
-   };
-
-   const decreaseItemHandler = (itemID) => {
-      let cartItems = [...cart];
-      const indexItem = cartItems.findIndex(item => item.id === itemID);
-      if (cartItems[indexItem].quantity > 1) {
-         cartItems[indexItem].quantity--;
-      } else {
-         cartItems.splice(indexItem, 1);
-      }
-      setCart(cartItems);
-   };
-
    React.useEffect(() => {
-      console.log(cart);
-   }, [cart]);
+      console.log(cartState.cart, 'log state');
+   }, [cartState.cart]);
+
+   
+   // using useReducer
+   const addToCartAction = (item) => {
+      dispatch({ 
+         type: "ADD_ITEM",
+         payload: item
+      });
+   };
+
+   const increaseItemAction = (item) => {
+      dispatch({
+         type: "ADD_ITEM",
+         payload: item
+      });
+   };
+
+   const decreaseItemAction = (itemID) => {
+      const findItemInCart = cartState.cart.find(val => val.id === itemID);
+      if(findItemInCart.quantity > 1) {
+         dispatch({
+            type: "DECREASE_ITEM",
+            payload: itemID
+         });         
+      } else {
+         dispatch({
+            type: "REMOVE_ITEM",
+            payload: itemID
+         });
+      }
+   };
 
    return (
       <div className="max-w-lg my-0 mx-auto">
          <Header
             cartPanel={toggleCartPanel}
-            itemCount={calcItemsQuantity(cart)}
+            itemCount={calcItemsQuantity(cartState.cart)}
          />
          <main className="container mx-auto px-0 pb-6 pt-14">
             <div className="py-5">
@@ -70,7 +75,7 @@ function App() {
                      <div key={product.id} className={`w-1/2 px-2`}>
                         <ProductCard
                            product={product}
-                           addToCart={addToCartHandler}
+                           addToCart={addToCartAction}
                         />
                      </div>
                   ))}
@@ -80,14 +85,15 @@ function App() {
          <CartPanel
             isOpen={openCart}
             closeCartPanel={toggleCartPanel}
-            totalPrice={calcTotalPrice(cart)}
+            totalPrice={calcTotalPrice(cartState.cart)}
+            titlePanel={"Shopping Cart List"}
          >
-            {cart.length > 0 ?
-               cart.map((item) => (
+            {cartState.cart.length > 0 ?
+               cartState.cart.map((item) => (
                   <CartItem key={item.id}
                      cartItem={item}
-                     increaseItem={increaseItemHandler}
-                     decreaseItem={decreaseItemHandler}
+                     increaseItem={increaseItemAction}
+                     decreaseItem={decreaseItemAction}
                   />
                ))
                :

@@ -13,7 +13,7 @@ function CounterItem({ className, cartItem, increaseItem, decreaseItem }) {
          <button
             disabled={(cartItem.quantity >= cartItem.stock) ? true : false}
             className="flex-none w-6 h-6 block-center-middle"
-            onClick={() => increaseItem(cartItem.id)}
+            onClick={() => increaseItem(cartItem)}
          >+</button>
       </div>
    )

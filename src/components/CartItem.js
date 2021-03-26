@@ -13,11 +13,10 @@ function CartItem({ cartItem, increaseItem, decreaseItem }) {
          />
          <div className="space-y-2 w-full">
             <p className="text-base leading-tight mb-2">{cartItem.name}</p>
-            <small>Item Price: Rp. {cartItem.price} </small>
-            <br/>
-            <small>Stock: {cartItem.stock} 
+            <small className="block">Item Price: Rp. {cartItem.price} </small>
+            <small className="block">Stock: {cartItem.stock} 
                {cartItem.quantity >= cartItem.stock 
-                  ? <em className="ml-2">(Max purchase of this product is {cartItem.stock} items)</em>
+                  ? <em className="ml-2">(Max purchase of product is {cartItem.stock} items)</em>
                   : null
                }
             </small>
