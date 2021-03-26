@@ -34,10 +34,22 @@ function App() {
    
    // using useReducer
    const addToCartAction = (item) => {
-      dispatch({ 
-         type: "ADD_ITEM",
-         payload: item
-      });
+      const findItemInCart = cartState.cart.find(val => val.id === item.id);
+      if(!findItemInCart) {
+         dispatch({ 
+            type: "ADD_ITEM",
+            payload: item
+         });
+      } else if (findItemInCart) {
+         if(findItemInCart.quantity >= findItemInCart.stock) {
+            alert('Stock item is empty');
+         } else {
+            dispatch({ 
+               type: "ADD_ITEM",
+               payload: item
+            });
+         }
+      }
    };
 
    const increaseItemAction = (item) => {
