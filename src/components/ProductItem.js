@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Button from './Button';
 
-function ProductCard({ product, addToCart }) {
+function ProductItem({ product, addToCart }) {
    const isHover = "hover:-translate-y-1 hover:shadow-md";
    const cardStyles = classnames("mb-3 rounded-lg border border-gray-100 bg-white transform transition", isHover);
    
@@ -26,14 +26,14 @@ function ProductCard({ product, addToCart }) {
    )
 }
 
-ProductCard.defaultProps = {
+ProductItem.defaultProps = {
    name: "Product Name",
    price: 15000,
 };
 
-ProductCard.propTypes = {
+ProductItem.propTypes = {
    name: PropTypes.string.isRequired,
    price: PropTypes.number.isRequired
 };
 
-export default ProductCard;
+export default ProductItem;

@@ -2,14 +2,31 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Button from './Button';
+import CartList from "./CartList";
 
-function CartPanel({ children, isOpen, closeCartPanel, totalPrice, titlePanel }) {
-   
+import { calcTotalPrice } from '../utils';
+import { useCartConsumer } from '../contexts/cartContext';
+function CartPanel({ isOpen, closeCartPanel, titlePanel }) {
+   const { cartState, dispatch } = useCartConsumer();
+
    const panelClasses = classnames({
       "transform transition ease-in-out duration-300": true,
       "translate-x-full": isOpen === false,
       "translate-x-0": isOpen === true
    });
+
+   const increaseItemAction = (item) => {
+      dispatch({ type: "ADD_ITEM", payload: item });
+   };
+
+   const decreaseItemAction = (itemID) => {
+      const findItemInCart = cartState.cart.find(val => val.id === itemID);
+      if(findItemInCart.quantity > 1) {
+         dispatch({ type: "DECREASE_ITEM", payload: itemID });         
+      } else {
+         dispatch({ type: "REMOVE_ITEM", payload: itemID });
+      }
+   };
 
    return (
       <aside className={`fixed inset-y-0 right-0 pl-10 max-w-full flex z-40 ${panelClasses}`}>
@@ -31,13 +48,15 @@ function CartPanel({ children, isOpen, closeCartPanel, totalPrice, titlePanel })
                      <h2 className="text-lg font-bold text-gray-900">{titlePanel}</h2>
                   </div>
                </div>
-               <div className="flex-1 py-5 px-3 overflow-y-auto overflow-x-hidden">
-                  {children}
-               </div>
+               <CartList 
+                  items={cartState.cart}
+                  increaseItem={increaseItemAction}
+                  decreaseItem={decreaseItemAction}
+               />
                <div className="flex-none block h-20 px-3 py-3">
                   <Button className="flex items-center w-full h-full">
                      <span className="flex-grow text-base text-left font-semibold">Proceed To Checkout</span>
-                     <span className="text-base">Rp {totalPrice}</span>
+                     <span className="text-base">Rp. {calcTotalPrice(cartState.cart)}</span>
                   </Button>
                </div>
             </div>

@@ -1,6 +1,10 @@
 import { Cart } from "./Icons";
+import { useCartConsumer } from '../contexts/cartContext';
+import { calcItemsQuantity } from '../utils';
 
-function Header({ cartPanel, itemCount }) {
+function Header({ cartPanel }) {
+   const { cartState } = useCartConsumer();
+   const itemCount = calcItemsQuantity(cartState.cart);
    return (
       <header className="w-full fixed top-0 inset-x-0 z-20 shadow-md h-14 bg-white">
          <div className="max-w-lg my-0 mx-auto h-full flex items-center justify-between">

@@ -1,19 +1,15 @@
 import React from 'react';
 import Header from "./components/Header";
 import Overlay from './components/Overlay';
-import ProductCard from "./components/ProductCard";
+import ProductList from "./components/ProductList";
 import CartPanel from './components/CartPanel';
-import CartItem from "./components/CartItem";
-import useEscapeKeyPress from './hooks/useEscapeKeyPress';
 
-import datas from "./services/products.json";
-import { calcItemsQuantity, calcTotalPrice } from './utils';
+import useEscapeKeyPress from './hooks/useEscapeKeyPress';
 import { useCartConsumer } from './contexts/cartContext';
-const { products } = datas;
 
 function App() {
    const [openCart, setOpenCart] = React.useState(false);
-   const { cartState, dispatch } = useCartConsumer();
+   const { cartState } = useCartConsumer();
 
    const toggleCartPanel = () => {
       setOpenCart(!openCart);
@@ -31,90 +27,20 @@ function App() {
       console.log(cartState.cart, 'log state');
    }, [cartState.cart]);
 
-   
-   // using useReducer
-   const addToCartAction = (item) => {
-      const findItemInCart = cartState.cart.find(val => val.id === item.id);
-      if(!findItemInCart) {
-         dispatch({ 
-            type: "ADD_ITEM",
-            payload: item
-         });
-      } else if (findItemInCart) {
-         if(findItemInCart.quantity >= findItemInCart.stock) {
-            alert('Stock item is empty');
-         } else {
-            dispatch({ 
-               type: "ADD_ITEM",
-               payload: item
-            });
-         }
-      }
-   };
-
-   const increaseItemAction = (item) => {
-      dispatch({
-         type: "ADD_ITEM",
-         payload: item
-      });
-   };
-
-   const decreaseItemAction = (itemID) => {
-      const findItemInCart = cartState.cart.find(val => val.id === itemID);
-      if(findItemInCart.quantity > 1) {
-         dispatch({
-            type: "DECREASE_ITEM",
-            payload: itemID
-         });         
-      } else {
-         dispatch({
-            type: "REMOVE_ITEM",
-            payload: itemID
-         });
-      }
-   };
-
    return (
       <div className="max-w-lg my-0 mx-auto">
-         <Header
-            cartPanel={toggleCartPanel}
-            itemCount={calcItemsQuantity(cartState.cart)}
-         />
+         <Header cartPanel={toggleCartPanel} />
          <main className="container mx-auto px-0 pb-6 pt-14">
             <div className="py-5">
-               <div className="flex flex-wrap mb-4 -mx-2">
-                  {products.map((product) => (
-                     <div key={product.id} className={`w-1/2 px-2`}>
-                        <ProductCard
-                           product={product}
-                           addToCart={addToCartAction}
-                        />
-                     </div>
-                  ))}
-               </div>
+               <ProductList />
             </div>
          </main>
          <CartPanel
             isOpen={openCart}
             closeCartPanel={toggleCartPanel}
-            totalPrice={calcTotalPrice(cartState.cart)}
             titlePanel={"Shopping Cart List"}
-         >
-            {cartState.cart.length > 0 ?
-               cartState.cart.map((item) => (
-                  <CartItem key={item.id}
-                     cartItem={item}
-                     increaseItem={increaseItemAction}
-                     decreaseItem={decreaseItemAction}
-                  />
-               ))
-               :
-               <div className="h-full flex items-center justify-center">
-                  <p className="font-semibold">Cart is Empty</p>
-               </div>
-            }
-         </CartPanel>
-         {openCart ? <Overlay remove={toggleCartPanel} /> : null}
+         />
+         {openCart ? <Overlay onClick={() => toggleCartPanel()} /> : null}
       </div>
    );
 }
