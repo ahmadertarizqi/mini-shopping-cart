@@ -1,9 +1,10 @@
 import classnames from 'classnames';
 import CounterItem from './CounterItem';
+import { TimesRounded } from './Icons';
 
-function CartItem({ cartItem, increaseItem, decreaseItem }) {
+function CartItem({ cartItem, increaseItem, decreaseItem, removeItem }) {
    const isHover = "hover:shadow";
-   const cardItemStyles = classnames("bg-white p-3 rounded mb-2 border border-gray-100 transform transition flex items-center", isHover);
+   const cardItemStyles = classnames("relative bg-white p-3 rounded mb-2 border border-gray-100 transform transition flex items-center", isHover);
    
    return (
       <div className={cardItemStyles}>
@@ -12,7 +13,7 @@ function CartItem({ cartItem, increaseItem, decreaseItem }) {
             alt="img-cart-item"
          />
          <div className="space-y-2 w-full">
-            <p className="text-base leading-tight mb-2">{cartItem.name}</p>
+            <p className="text-base leading-tight mb-2 pr-8">{cartItem.name}</p>
             <small className="block">Item Price: Rp. {cartItem.price} </small>
             <small className="block">Stock: {cartItem.stock} 
                {cartItem.quantity >= cartItem.stock 
@@ -32,6 +33,12 @@ function CartItem({ cartItem, increaseItem, decreaseItem }) {
                </p>
             </div>
          </div>
+         <button
+            className="absolute top-3 right-2 z-10"
+            onClick={() => removeItem(cartItem.id)}
+         >
+            <TimesRounded width="24px" height="24px" />
+         </button>
       </div>
    )
 }

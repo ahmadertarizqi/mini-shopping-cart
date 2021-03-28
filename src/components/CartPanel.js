@@ -6,6 +6,7 @@ import CartList from "./CartList";
 
 import { calcTotalPrice } from '../utils';
 import { useCartConsumer } from '../contexts/cartContext';
+
 function CartPanel({ isOpen, closeCartPanel, titlePanel }) {
    const { cartState, dispatch } = useCartConsumer();
 
@@ -24,8 +25,12 @@ function CartPanel({ isOpen, closeCartPanel, titlePanel }) {
       if(findItemInCart.quantity > 1) {
          dispatch({ type: "DECREASE_ITEM", payload: itemID });         
       } else {
-         dispatch({ type: "REMOVE_ITEM", payload: itemID });
+         removeItemAction(itemID);
       }
+   };
+
+   const removeItemAction = (itemID) => {
+      dispatch({ type: "REMOVE_ITEM", payload: itemID });
    };
 
    return (
@@ -52,6 +57,7 @@ function CartPanel({ isOpen, closeCartPanel, titlePanel }) {
                   items={cartState.cart}
                   increaseItem={increaseItemAction}
                   decreaseItem={decreaseItemAction}
+                  removeItem={removeItemAction}
                />
                <div className="flex-none block h-20 px-3 py-3">
                   <Button className="flex items-center w-full h-full">

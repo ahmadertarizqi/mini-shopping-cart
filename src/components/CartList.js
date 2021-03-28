@@ -1,14 +1,16 @@
 import CartItem from "./CartItem";
 
-function CartList({ items, increaseItem, decreaseItem }) {
+function CartList({ items, increaseItem, decreaseItem, removeItem }) {
    return (
       <div className="flex-1 py-5 px-3 overflow-y-auto overflow-x-hidden">
          {items.length > 0 ?
             items.map(item => (
-               <CartItem key={item.id}
+               <CartItem 
+                  key={item.id}
                   cartItem={item}
                   increaseItem={increaseItem}
                   decreaseItem={decreaseItem}
+                  removeItem={removeItem}
                />
             ))
             :
