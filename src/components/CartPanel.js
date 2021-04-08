@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import Button from './Button';
+import Button from './common/Button';
 import CartList from "./CartList";
 
 import { calcTotalPrice } from '../utils';
 import { useCartConsumer } from '../contexts/cartContext';
+import * as types from "../contexts/constants";
 
 function CartPanel({ isOpen, closeCartPanel, titlePanel }) {
    const { cartState, dispatch } = useCartConsumer();
@@ -17,20 +18,20 @@ function CartPanel({ isOpen, closeCartPanel, titlePanel }) {
    });
 
    const increaseItemAction = (item) => {
-      dispatch({ type: "ADD_ITEM", payload: item });
+      dispatch({ type: types.ADD_ITEM, payload: item });
    };
 
    const decreaseItemAction = (itemID) => {
       const findItemInCart = cartState.cart.find(val => val.id === itemID);
       if(findItemInCart.quantity > 1) {
-         dispatch({ type: "DECREASE_ITEM", payload: itemID });         
+         dispatch({ type: types.DECREASE_ITEM, payload: itemID });
       } else {
          removeItemAction(itemID);
       }
    };
 
    const removeItemAction = (itemID) => {
-      dispatch({ type: "REMOVE_ITEM", payload: itemID });
+      dispatch({ type: types.REMOVE_ITEM, payload: itemID });
    };
 
    return (

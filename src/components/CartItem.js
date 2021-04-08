@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import CounterItem from './CounterItem';
-import { TimesRounded } from './Icons';
+import { TimesRounded } from './icons';
 
 function CartItem({ cartItem, increaseItem, decreaseItem, removeItem }) {
    const isHover = "hover:shadow";

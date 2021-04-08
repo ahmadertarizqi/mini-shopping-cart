@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from "./components/Header";
-import Overlay from './components/Overlay';
+import Header from "./components/common/Header";
+import Overlay from './components/common/Overlay';
 import ProductList from "./components/ProductList";
 import CartPanel from './components/CartPanel';
 

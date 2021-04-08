@@ -1,4 +1,5 @@
 import React from 'react';
+import * as types from "./constants";
 
 const initialState = {
    cart: []
@@ -6,7 +7,7 @@ const initialState = {
 
 function reducer(state, action) {
    switch(action.type) {
-      case "ADD_ITEM": {
+      case types.ADD_ITEM: {
          const findItem = state.cart.findIndex(val => val.id === action.payload.id); // if item already in cart
          if(findItem !== -1) {
             let cartTemp = [...state.cart];
@@ -26,7 +27,7 @@ function reducer(state, action) {
          }
       }
 
-      case "DECREASE_ITEM": {
+      case types.DECREASE_ITEM: {
          const findItem = state.cart.findIndex(val => val.id === action.payload);
          let cartTemp = [...state.cart];
          if(cartTemp[findItem].quantity > 1) {
@@ -41,7 +42,7 @@ function reducer(state, action) {
          }
       }
 
-      case "REMOVE_ITEM": {
+      case types.REMOVE_ITEM: {
          return {
             ...state,
             cart: state.cart.filter(val => val.id !== action.payload)

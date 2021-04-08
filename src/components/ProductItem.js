@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
-import Button from './Button';
+import Button from './common/Button';
 
 function ProductItem({ product, addToCart }) {
    const isHover = "hover:-translate-y-1 hover:shadow-md";
