@@ -9,7 +9,6 @@ import { useCartConsumer } from './contexts/cartContext';
 
 function App() {
    const [openCart, setOpenCart] = React.useState(false);
-   const { cartState } = useCartConsumer();
 
    const toggleCartPanel = () => {
       setOpenCart(!openCart);
@@ -22,10 +21,6 @@ function App() {
 
    // close cartPanel with Esc keyboard
    useEscapeKeyPress(openCart, toggleCartPanel);
-
-   React.useEffect(() => {
-      console.log(cartState.cart, 'log state');
-   }, [cartState.cart]);
 
    return (
       <div className="max-w-lg my-0 mx-auto">

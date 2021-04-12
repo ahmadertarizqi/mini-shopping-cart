@@ -14,7 +14,7 @@
       ],
       "description": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
       "stock": 16,
-      "category": "women",
+      "category": "shirt",
       "colors": ["yellow", "gray", "green"],
       "size": ["M", "L", "XL"]
     },
@@ -32,7 +32,7 @@
       ],
       "description": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
       "stock": 6,
-      "category": "women",
+      "category": "jacket",
       "colors": ["gray", "orange"],
       "size": ["M", "L", "XL"]
     },
@@ -50,7 +50,7 @@
       ],
       "description": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
       "stock": 12,
-      "category": "women",
+      "category": "jacket",
       "colors": ["blue", "white", "yellow"],
       "size": ["M", "L", "XL"]
     },
@@ -68,7 +68,7 @@
       ],
       "description": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
       "stock": 10,
-      "category": "women",
+      "category": "shoes",
       "colors": ["pink", "gray", "green"],
       "size": ["M", "L", "XL"]
     },
@@ -86,7 +86,7 @@
       ],
       "description": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
       "stock": 10,
-      "category": "women",
+      "category": "shoes",
       "colors": ["pink", "yellow", "gray"],
       "size": ["M", "L", "XL"]
     },
@@ -104,7 +104,7 @@
       ],
       "description": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
       "stock": 10,
-      "category": "women",
+      "category": "shirt",
       "colors": ["blue", "gray", "orange"],
       "size": ["M", "L", "XL"]
     },
@@ -122,7 +122,7 @@
       ],
       "description": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
       "stock": 10,
-      "category": "women",
+      "category": "jacket",
       "colors": ["red", "white", "blue"],
       "size": ["M", "L", "XL"]
     },
@@ -140,7 +140,7 @@
       ],
       "description": "Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,",
       "stock": 10,
-      "category": "women",
+      "category": "jacket",
       "colors": ["black", "yellow"],
       "size": ["M", "L", "XL"]
     }

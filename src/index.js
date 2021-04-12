@@ -3,13 +3,16 @@ import ReactDOM from 'react-dom';
 import './tailwind.css';
 import App from './App';
 import { CartProvider } from './contexts/cartContext';
+import { ProductsProvider } from './contexts/productsContext';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <CartProvider>
-      <App />
-    </CartProvider>
+    <ProductsProvider>
+      <CartProvider>
+        <App />
+      </CartProvider>
+    </ProductsProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -1,12 +1,12 @@
 import ProductItem from "./ProductItem";
-import datas from "../services/products.json";
-import { useCartConsumer } from '../contexts/cartContext';
 import * as types from "../contexts/constants";
+import { useCartConsumer } from '../contexts/cartContext';
+import { useProductsConsumer } from "../contexts/productsContext";
 
-const { products } = datas;
 
 function ProductList() {
    const { cartState, dispatch } = useCartConsumer();
+   const { state } = useProductsConsumer();
 
    const addToCartAction = (item) => {
       const findItemInCart = cartState.cart.find(val => val.id === item.id);
@@ -21,9 +21,11 @@ function ProductList() {
       }
    };
 
+   const productsResult = (state.productsFiltered.length > 0) ? state.productsFiltered : state.products;
+
    return (
       <div className="flex flex-wrap mb-4 -mx-2">
-         {products.map((product) => (
+         {productsResult.map((product) => (
             <div key={product.id} className={`w-1/2 px-2`}>
                <ProductItem
                   product={product}

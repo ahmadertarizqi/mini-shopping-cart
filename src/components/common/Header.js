@@ -1,20 +1,20 @@
+import { useEffect, useState } from "react";
 import { Cart } from "../icons";
 import { useCartConsumer } from '../../contexts/cartContext';
+import { useProductsConsumer } from '../../contexts/productsContext';
 import { calcItemsQuantity } from '../../utils';
 import DropdownMenu from "./DropdownMenu";
-import { useState } from "react";
-
-const menuCategory = [
-   { label: 'All' },
-   { label: 'Shirt' },
-   { label: 'Jacket' },
-   { label: 'Shoes' }
-];
 
 function Header({ cartPanel }) {
-   const [menuSelected, setMenuSelected] = useState(menuCategory[0]);
    const { cartState } = useCartConsumer();
-   const itemCount = calcItemsQuantity(cartState.cart);   
+   const { state, dispatcher } = useProductsConsumer();
+   const [menuSelected, setMenuSelected] = useState(state.categories[0]);
+   const itemCount = calcItemsQuantity(cartState.cart);
+
+   const handleFilterByCategory = (value) => {
+      setMenuSelected(value);
+      dispatcher({ type: "FILTER_BY_CATEGORY", payload: value });
+   };
 
    return (
       <header className="w-full fixed top-0 inset-x-0 z-20 shadow-md h-14 bg-white">
@@ -22,9 +22,9 @@ function Header({ cartPanel }) {
             <h3 className="flex-grow text-left text-xl font-semibold pr-4">Shopping Carts</h3>
             <div className="flex">
                <DropdownMenu 
-                  options={menuCategory}
+                  options={state.categories}
                   selected={menuSelected}
-                  onSelectedChange={setMenuSelected}
+                  onSelectedChange={handleFilterByCategory}
                />
                <div className="mx-2 border-l"></div>
                <button className="flex-none w-10 h-10 relative flex items-center justify-center">
